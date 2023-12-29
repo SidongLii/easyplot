@@ -1,0 +1,22 @@
+Package: easyplot
+Title: make it easy to use ggplot2 for plot
+Version: 0.0.1.0000
+Authors@R: 
+    person("Lee", "Last", , "first.last@example.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: make it easy to use ggplot2 for plot.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    agricolae,
+    ggplot2,
+    magrittr,
+    RColorBrewer
+Depends: 
+    R (>= 4.2.1),
+    tidyverse
+LazyData: true
+SystemRequirements: 
+    message("Thank you for using this R package，any suggestions contact with me by email<2875620735@qq.com>")
