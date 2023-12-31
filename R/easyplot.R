@@ -127,3 +127,6 @@ require(RColorBrewer)
     return(p=p)
   }
 }
+.onLoad <- function(libname,pkgname){
+  message("Thank you for using this package!")
+}
