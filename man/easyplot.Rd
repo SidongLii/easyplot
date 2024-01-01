@@ -16,7 +16,9 @@ easyplot(
   vjust = 0.9,
   savename = "plot.jpg",
   width = 8,
-  height = 6
+  height = 6,
+  alpha = 0.05,
+  method = "more"
 )
 }
 \arguments{
@@ -43,6 +45,10 @@ easyplot(
 \item{width}{image's size}
 
 \item{height}{image's size}
+
+\item{alpha}{level of significance test}
+
+\item{method}{it can be 'more' when there are more than three replicates per experimental treatment;otherwise,it should be 'less'}
 }
 \value{
 p

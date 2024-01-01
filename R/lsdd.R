@@ -5,19 +5,13 @@
 #' @param method it can be 'more' when there are more than three replicates per experimental treatment;otherwise,it should be 'less'
 #' @return process data out
 #' @export lsdd
+#' @import agricolae
+#' @import magrittr
+#' @import dplyr
+#' @importFrom tidyr spread
 #' @author Sidong-Li <2875620735@qq.com>
-#' @examples lsdd(date=yourdata)
+#' @examples lsdd(data=yourdata)
 lsdd <- function(data,alpha=0.05,method="more"){
-  p_list <- c("agricolae","magrittr","ggplot2","RColorBrewer")
-  for (i in p_list) {
-    if (!requireNamespace(i,quietly = T)) {
-      install.packages(i)
-    }
-  }
-  require(agricolae)
-  require(magrittr)
-  require(ggplot2)
-  require(RColorBrewer)
   options(warn = -1)
   if (method=="more") {
     colnames(data) <- c("type","value")
@@ -94,20 +88,13 @@ lsdd <- function(data,alpha=0.05,method="more"){
     data$value <- as.numeric(data$value)
     data$type <- as.character(data$type)
     data%>% aov(value~type,data=.) %>%
-      LSD.test("type",group = T,console = T,alpha = alpha) %>% .$groups->e1
-    e1$type <- rownames(e1)
-    rownames(e1) <- NULL
-    e1 <- e1[,c(3,2)]
-    aggregate(x = data,by = list(data$type),FUN = mean) %>% .[,c(1,3)]->e2
-    colnames(e2) <- c("type","mean")
-    aggregate(x = data,by = list(data$type),FUN = sd) %>% .[,c(1,3)]->e3
-    colnames(e3) <- c("type","sd")
-    e4<- merge(e2,e3,by = "type")
-    qw<- merge(e4,e1,by = "type")
-    data <- qw
+      LSD.test("type",group = T,console = T,alpha = alpha) %>% .$groups %>% mutate(value=NULL)->e1
+    e1$type <- row.names(e1)
+    data %<>% group_by(type) %>% summarise(mean=mean(value),sd=sd(value)) %>% as.data.frame()
+    data<- merge(data,e1,by = "type")
     return(list("data"=data))
   }
-else{
-  message("method must be 'more' or 'less'!")
-}
+  else{
+    message("method must be 'more' or 'less'!")
+  }
 }

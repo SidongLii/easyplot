@@ -13,7 +13,7 @@ The goal of easyplot is to …
 You can install the development version of easyplot like so:
 
 ``` r
-devtools::install_github("SidongLii/easyplot")
+# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
 ```
 
 ## Example
@@ -22,11 +22,7 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(easyplot)
-?easyplot
 ## basic example code
-easyplot(data=iris[,c(5,1)],plot="barplot",xlab="",alpha=0.01,method="less")
-easyplot(data=iris[,c(5,1)],plot="boxplot",xlab="",alpha=0.01,method="more")
-easyplot(data=iris[,c(5,1)],plot="boxplot",color=c("red","blue","pink"),savename="boxplot.pdf")
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?

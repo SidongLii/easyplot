@@ -12,31 +12,21 @@
 #' @param height image's size
 #' @param hjust position of axis.text.text
 #' @param vjust position of axis.text.text
+#' @param alpha level of significance test
+#' @param method it can be 'more' when there are more than three replicates per experimental treatment;otherwise,it should be 'less'
 #' @return p
 #' @author Sidong-Li 2875620735@qq.com
 #' @export easyplot
-#'
+#' @import RColorBrewer
+#' @import ggplot2
 #' @examples easyplot(data=mydata,plot="barplot")
 easyplot <- function(data,plot="barplot",xlab="type",ylab="mean",rank="none",
                      color=yanse,angle=58,hjust=0.99,vjust=0.9,savename="plot.jpg",
-                     width=8,height=6,alpha=0.05,method="more"){
-p_list <- c("agricolae","magrittr","ggplot2","RColorBrewer")
-for (i in p_list) {
-  if (!requireNamespace(i,quietly = T)) {
-    install.packages(i)
-  }
-}
-require(agricolae)
-require(magrittr)
-require(ggplot2)
-require(RColorBrewer)
-  theme_ld <- theme(panel.background = element_rect(fill = "white",colour = "white"),
-        legend.position = "none",
-        axis.line = element_line(linewidth =0.5,colour = "black"),
+                     width=8,height=8,alpha=0.05,method="more"){
+  theme_ld <- theme(legend.position = "none",
         axis.title = element_text(size=25,face = 'bold'),
         axis.text.y = element_text(size=15),
         axis.text.x = element_text(size=20,angle = angle,hjust = hjust,vjust = vjust),
-        plot.title = element_text(size=25,hjust=0.5),
         axis.line.y.right = element_blank(),
         axis.text.y.right = element_blank(),
         axis.ticks.y.right = element_blank(),
@@ -58,7 +48,8 @@ require(RColorBrewer)
         scale_y_continuous(limits = c(0,max(q$mean)*1.7),expand = c(0,0))+
         labs(y=ylab,x=xlab)+
         scale_fill_manual(values = color)+
-        geom_text(mapping = aes(x = type,y =mean+sd+max(q$mean)*0.07,label=groups),size=7)+
+        geom_text(mapping = aes(x = type,y =mean+sd+max(q$mean)*0.07,label=groups),size=10)+
+        theme_bw()+
         theme_ld
       print(p)
       ggsave(filename = savename,plot = p,width = width,height = height)
@@ -74,8 +65,9 @@ require(RColorBrewer)
         labs(y=ylab,x=xlab)+
         scale_fill_manual(values = color)+
         scale_color_manual(values = color)+
-        geom_text(data=qw,mapping = aes(x = type,y =mean+sd+max(qw$mean)*0.2,label=groups),size=7)+
-       theme_ld
+        geom_text(data=qw,mapping = aes(x = type,y =mean+sd+max(qw$mean)*0.2,label=groups),size=10)+
+        theme_bw()+
+        theme_ld
       print(p)
       ggsave(filename = savename,plot = p,width = width,height = height)
       message(paste("The plot has been saved as",savename))
@@ -98,7 +90,8 @@ require(RColorBrewer)
         scale_y_continuous(limits = c(0,max(q$mean)*1.7),expand = c(0,0))+
         labs(y=ylab,x=xlab)+
         scale_fill_manual(values = color)+
-        geom_text(mapping = aes(x = type,y =mean+sd+max(q$mean)*0.07,label=groups),size=7)+
+        geom_text(mapping = aes(x = type,y =mean+sd+max(q$mean)*0.07,label=groups),size=10)+
+        theme_bw()+
        theme_ld
       print(p)
       ggsave(filename = savename,plot = p,width = width,height = height)
@@ -116,7 +109,8 @@ require(RColorBrewer)
         labs(y=ylab,x=xlab)+
         scale_fill_manual(values = color)+
         scale_color_manual(values = color)+
-        geom_text(data=qw,mapping = aes(x = type,y =mean+sd+max(qw$mean)*0.2,label=groups),size=7)+
+        geom_text(data=qw,mapping = aes(x = type,y =mean+sd+max(qw$mean)*0.2,label=groups),size=10)+
+        theme_bw()+
        theme_ld
       print(p)
       ggsave(filename = savename,plot = p,width = width,height = height)

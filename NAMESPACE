@@ -2,3 +2,9 @@
 
 export(easyplot)
 export(lsdd)
+import(RColorBrewer)
+import(agricolae)
+import(dplyr)
+import(ggplot2)
+import(magrittr)
+importFrom(tidyr,spread)

@@ -20,7 +20,7 @@ process data out
 Get significance,mean and sd without exception value
 }
 \examples{
-lsdd(date=yourdata)
+lsdd(data=yourdata)
 }
 \author{
 Sidong-Li \href{mailto:2875620735@qq.com}{2875620735@qq.com}

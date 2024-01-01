@@ -13,10 +13,11 @@ Imports:
     agricolae,
     ggplot2,
     magrittr,
-    RColorBrewer
+    RColorBrewer,
+    dplyr,
+    tidyr
 Depends: 
-    R (>= 4.2.1),
-    tidyverse
+    R (>= 4.2.1)
 LazyData: true
 SystemRequirements: 
     message("Thank you for using this R package，any suggestions contact with me by email<2875620735@qq.com>")
