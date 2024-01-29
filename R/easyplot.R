@@ -23,14 +23,15 @@
 easyplot <- function(data,plot="barplot",xlab="type",ylab="mean",rank="none",
                      color=yanse,angle=58,hjust=0.99,vjust=0.9,savename="plot.jpg",
                      width=8,height=8,alpha=0.05,method="more"){
-  theme_ld <- theme(legend.position = "none",
-        axis.title = element_text(size=30,face = 'bold',color="black"),
-        axis.text.y = element_text(size=15,color="black"),
-        axis.text.x = element_text(size=25,angle = angle,hjust = hjust,vjust = vjust,color="black"),
-        axis.line.y.right = element_blank(),
-        axis.text.y.right = element_blank(),
-        axis.ticks.y.right = element_blank(),
-        axis.ticks.length.y = unit(0.2,"cm"))
+  theme_ld <- theme(legend.position = "none", 
+          panel.border = element_rect(color = "black",size=2),
+          panel.grid = element_blank(),
+          axis.title = element_text(size = 30, face = "bold",color="black"), 
+          axis.text.y = element_text(size = 18,face="bold",color="black"), 
+          axis.text.x = element_text(size = 25, angle = 58,hjust = 0.99, vjust = 0.9,color="black",face="bold"), 
+          axis.line.y.right = element_blank(), 
+          axis.text.y.right = element_blank(), axis.ticks.y.right = element_blank(), 
+          axis.ticks.length.y = unit(0.2, "cm"))
 
   options(warn = -1)
   q <- data
