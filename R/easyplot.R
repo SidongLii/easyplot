@@ -45,11 +45,11 @@ easyplot <- function(data,plot="barplot",xlab="type",ylab="mean",rank="none",
         geom_bar(aes(x = type,y=mean,fill=type),
                  stat="identity",position=position_identity(),width=0.6)+
         geom_errorbar(aes(x = type,ymax=mean+sd,ymin=mean-sd),
-                      position = position_identity(),width=0.2)+
+                      position = position_identity(),width=0.2,linewidth=1.5)+
         scale_y_continuous(limits = c(0,max(q$mean)*1.7),expand = c(0,0))+
         labs(y=ylab,x=xlab)+
         scale_fill_manual(values = color)+
-        geom_text(mapping = aes(x = type,y =mean+sd+max(q$mean)*0.07,label=groups),size=10)+
+        geom_text(mapping = aes(x = type,y =mean+sd+max(q$mean)*0.07,label=groups),size=12,face="bold")+
         theme_bw()+
         theme_ld
       print(p)
@@ -66,7 +66,7 @@ easyplot <- function(data,plot="barplot",xlab="type",ylab="mean",rank="none",
         labs(y=ylab,x=xlab)+
         scale_fill_manual(values = color)+
         scale_color_manual(values = color)+
-        geom_text(data=qw,mapping = aes(x = type,y =mean+sd+max(qw$mean)*0.2,label=groups),size=10)+
+        geom_text(data=qw,mapping = aes(x = type,y =mean+sd+max(qw$mean)*0.2,label=groups),size=12,face="bold")+
         theme_bw()+
         theme_ld
       print(p)
@@ -87,11 +87,11 @@ easyplot <- function(data,plot="barplot",xlab="type",ylab="mean",rank="none",
         geom_bar(aes(x = type,y=mean,fill=type),
                  stat="identity",position=position_identity(),width=0.6)+
         geom_errorbar(aes(x = type,ymax=mean+sd,ymin=mean-sd),
-                      position = position_identity(),width=0.2)+
+                      position = position_identity(),width=0.2,linewidth=1.5)+
         scale_y_continuous(limits = c(0,max(q$mean)*1.7),expand = c(0,0))+
         labs(y=ylab,x=xlab)+
         scale_fill_manual(values = color)+
-        geom_text(mapping = aes(x = type,y =mean+sd+max(q$mean)*0.07,label=groups),size=10)+
+        geom_text(mapping = aes(x = type,y =mean+sd+max(q$mean)*0.07,label=groups),size=12,face="bold")+
         theme_bw()+
        theme_ld
       print(p)
@@ -110,7 +110,7 @@ easyplot <- function(data,plot="barplot",xlab="type",ylab="mean",rank="none",
         labs(y=ylab,x=xlab)+
         scale_fill_manual(values = color)+
         scale_color_manual(values = color)+
-        geom_text(data=qw,mapping = aes(x = type,y =mean+sd+max(qw$mean)*0.2,label=groups),size=10)+
+        geom_text(data=qw,mapping = aes(x = type,y =mean+sd+max(qw$mean)*0.2,label=groups),size=12,face="bold")+
         theme_bw()+
        theme_ld
       print(p)
